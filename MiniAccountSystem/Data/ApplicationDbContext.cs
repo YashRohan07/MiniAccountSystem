@@ -9,5 +9,7 @@ namespace MiniAccountSystem.Data
             : base(options)
         {
         }
+
+        // add DbSet<> here if needed later
     }
 }

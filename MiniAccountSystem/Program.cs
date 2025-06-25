@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MiniAccountSystem.Data;
+using MiniAccountSystem.Data.Seed;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add DB context with SQL Server
+// Step 1: Configure SQL Server DB context
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
                       ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
@@ -13,20 +14,27 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-// Add Identity services with Role support
+// Step 2: Configure Identity with Roles
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 {
-    options.SignIn.RequireConfirmedAccount = false; // You can change this if needed
+    options.SignIn.RequireConfirmedAccount = false; // Set to true if you enable email confirmation
 })
-.AddRoles<IdentityRole>() // Add Role management
+.AddRoles<IdentityRole>() // Role support
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-// Add Razor Pages
+// Step 3: Add Razor Pages
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
+// ? Step 4: Seed Roles (Admin, Accountant, Viewer) -- Use GetAwaiter().GetResult()
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    RoleSeeder.SeedRolesAsync(roleManager).GetAwaiter().GetResult();
+}
+
+// Step 5: Middleware Pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
@@ -34,7 +42,7 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Error");
-    app.UseHsts(); // Use strict transport security
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -42,8 +50,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication(); // Enable login, logout, register
-app.UseAuthorization();  // Enable role-based access
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapRazorPages();
 

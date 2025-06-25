@@ -10,6 +10,6 @@ namespace MiniAccountSystem.Data
         {
         }
 
-        // add DbSet<> here if needed later
+        // Add DbSet later for custom tables (if needed)
     }
 }

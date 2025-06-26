@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MiniAccountSystem.Models; 
 
 namespace MiniAccountSystem.Data
 {
@@ -10,6 +11,7 @@ namespace MiniAccountSystem.Data
         {
         }
 
-        // Add DbSet later for custom tables (if needed)
+        // Optional: Use this if you want to use EF Core to query the ChartOfAccounts table directly
+        public DbSet<ChartOfAccount> ChartOfAccounts { get; set; }
     }
 }

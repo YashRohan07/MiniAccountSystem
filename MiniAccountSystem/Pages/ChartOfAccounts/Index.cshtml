@@ -1,4 +1,27 @@
 ﻿@page
 @model MiniAccountSystem.Pages.ChartOfAccounts.IndexModel
+@using MiniAccountSystem.Models
 @{
+    ViewData["Title"] = "Chart of Accounts";
 }
+
+<h2>Chart of Accounts</h2>
+
+<form method="post">
+    <input type="text" name="AccountName" placeholder="Account Name" required />
+    <select name="ParentId">
+        <option value="">-- No Parent (Top Level) --</option>
+        @foreach (var account in Model.AllAccounts)
+        {
+            <option value="@account.Id">@account.AccountName</option>
+        }
+    </select>
+    <button type="submit">Add</button>
+</form>
+
+<ul>
+    @foreach (var account in Model.HierarchicalAccounts)
+    {
+        <li>@account.AccountName</li>
+    }
+</ul>

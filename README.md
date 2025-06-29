@@ -16,7 +16,7 @@ Frontend: Razor Pages with vanilla JavaScript for dynamic form manipulation
 ## User Roles & Access ##
 Admin (Yash)	Can manage all users, roles, chart of accounts.
 
-Viewer (Dhoni)	Can view existing data only; cannot add, edit or delete.
+Viewer (Dhoni)	Can view existing data only. Cannot add, edit or delete.
 
 Accountant (Rohan) Can create and manage vouchers, manage chart of accounts, but cannot manage users and roles.
 
@@ -34,7 +34,7 @@ Accountant (Rohan) Can create and manage vouchers, manage chart of accounts, but
 
 ![Screenshot (687)](https://github.com/user-attachments/assets/9b0124cd-20c4-48a8-be95-1cd87e4d52a4)
 
-## Data Table from Microsoft SQL Server Management Studio
+## Data Tables in SQL Server ##
 
 ![Screenshot (688)](https://github.com/user-attachments/assets/594baff7-4b5d-4478-b04b-902593fd6860)
 
@@ -55,14 +55,14 @@ Accountant (Rohan) Can create and manage vouchers, manage chart of accounts, but
 
 ![Screenshot (694)](https://github.com/user-attachments/assets/12f2c9b2-31aa-46e7-8748-6d2762f7ce23)
 
-## Admin can create accounts with assign parent and child ## 
+## Admin can create accounts with assign Parent/Child ## 
 
 ![Screenshot (695)](https://github.com/user-attachments/assets/0aa67713-8368-4982-9452-5b09bc6151c0)
 
 ![Screenshot (696)](https://github.com/user-attachments/assets/d1342329-fe64-471f-8f56-df3efe20fe86)
 
 
-## Admin can't create/insert any vouchers data ## 
+## Admin is restricted from create/insert any vouchers data, ensuring role separation ## 
 
 ![Screenshot (700)](https://github.com/user-attachments/assets/4aad9c8e-c0a4-4981-9fa2-553cb20890d9)
 
@@ -71,13 +71,13 @@ Accountant (Rohan) Can create and manage vouchers, manage chart of accounts, but
 
 ![Screenshot (701)](https://github.com/user-attachments/assets/5360588d-1dcc-4af4-8f75-2e75b677275b)
 
-## Accountant can create and insert voucher data ##
+## Accountants can record financial transactions by creating vouchers ##
 
 ![Screenshot (703)](https://github.com/user-attachments/assets/3b4c3d91-956f-4c1b-820e-7c2a19960c0e)
 
 ![Screenshot (704)](https://github.com/user-attachments/assets/4fed96ee-e429-4d54-bc9b-f575a9a22e0e)
 
-## Accountant can't see user details ##
+## Accountant Cannot Manage Users ##
 
 ![Screenshot (706)](https://github.com/user-attachments/assets/e28c2c7f-9169-4400-bc27-c001a925c373)
 
@@ -85,7 +85,7 @@ Accountant (Rohan) Can create and manage vouchers, manage chart of accounts, but
 
 ![Screenshot (708)](https://github.com/user-attachments/assets/2e6807f0-a929-4226-aad9-b96a954df543)
 
-## Admin can view Vouchers Report and also can Export to CSV file for downloads ##
+## Admins can generate and download vouchers as a CSV file ##
 
 ![Screenshot (711)](https://github.com/user-attachments/assets/4dbb8491-ab28-4ff7-a6cc-dd52fb871eb5)
 

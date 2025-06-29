@@ -22,16 +22,16 @@ Accountant (Rohan) Can create and manage vouchers, manage chart of accounts, but
 
 
 
-## Screenshots ##
+## Home Page with Login and Register button ##
 
 ![Screenshot (685)](https://github.com/user-attachments/assets/83662727-94e5-4ff6-98e8-2f98ea32b301)
 
-Home Page with Login and Register button.
+## Register a new user ##
 
 ![Screenshot (686)](https://github.com/user-attachments/assets/f99c6355-bca0-47fb-b974-7a06aec287a9)
 
-Register a new user.
+## User Profile ##
 
 ![Screenshot (687)](https://github.com/user-attachments/assets/9b0124cd-20c4-48a8-be95-1cd87e4d52a4)
 
-User Profile.
+

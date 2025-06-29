@@ -11,3 +11,10 @@ Authentication: ASP.NET Core Identity for user and role management
 Database: SQL Server with stored procedures managing core CRUD operations
 
 Frontend: Razor Pages with vanilla JavaScript for dynamic form manipulation
+
+
+## User Roles & Access ##
+User	Role	Permissions
+Yash	Admin	Full control: manage all users, roles, chart of accounts, vouchers.
+Dhoni	Viewer	Can view existing data only; cannot add, edit, or delete.
+Rohan	Accountant	Can create and manage vouchers, manage chart of accounts, but cannot manage users and roles.

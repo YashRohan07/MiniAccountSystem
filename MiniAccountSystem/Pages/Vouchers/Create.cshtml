@@ -1,4 +1,82 @@
 ﻿@page
 @model MiniAccountSystem.Pages.Vouchers.CreateModel
 @{
+    ViewData["Title"] = "Create Voucher";
+}
+
+<h2>Create Voucher</h2>
+
+<form method="post">
+    <label>Voucher Type:</label>
+    <select asp-for="VoucherType" required>
+        <option value="">Select Voucher Type</option>
+        <option value="Journal">Journal</option>
+        <option value="Payment">Payment</option>
+        <option value="Receipt">Receipt</option>
+    </select><br />
+
+    <label>Date:</label>
+    <input asp-for="VoucherDate" type="date" required /><br />
+
+    <label>Reference No:</label>
+    <input asp-for="ReferenceNo" type="text" required /><br />
+
+    <h3>Voucher Items</h3>
+    <div id="voucherItemsContainer">
+        <!-- Always start with at least one row -->
+        <div class="voucher-item">
+            <input type="hidden" name="VoucherItems.Index" value="0" />
+            <label>Account:</label>
+            <select name="VoucherItems[0].AccountId" required>
+                <option value="">-- Select Account --</option>
+                @foreach (var acc in Model.AccountList)
+                {
+                    <option value="@acc.Id">@acc.AccountName</option>
+                }
+            </select>
+            <label>Debit:</label>
+            <input name="VoucherItems[0].Debit" type="number" step="0.01" min="0" required />
+            <label>Credit:</label>
+            <input name="VoucherItems[0].Credit" type="number" step="0.01" min="0" required />
+        </div>
+    </div>
+
+    <button type="button" onclick="addRow()">Add Another Item</button><br /><br />
+    <button type="submit">Save Voucher</button>
+</form>
+
+<select id="accountOptionsTemplate" style="display:none;">
+    @foreach (var acc in Model.AccountList)
+    {
+        <option value="@acc.Id">@acc.AccountName</option>
+    }
+</select>
+
+@section Scripts {
+    <script>
+        let rowIndex = 1;
+
+        function addRow() {
+            const container = document.getElementById('voucherItemsContainer');
+
+            const div = document.createElement('div');
+            div.classList.add('voucher-item');
+
+            div.innerHTML = `
+                        <input type="hidden" name="VoucherItems.Index" value="${rowIndex}" />
+                        <label>Account:</label>
+                        <select name="VoucherItems[${rowIndex}].AccountId" required>
+                            <option value="">-- Select Account --</option>
+                            ${document.getElementById('accountOptionsTemplate').innerHTML}
+                        </select>
+                        <label>Debit:</label>
+                        <input name="VoucherItems[${rowIndex}].Debit" type="number" step="0.01" min="0" required />
+                        <label>Credit:</label>
+                        <input name="VoucherItems[${rowIndex}].Credit" type="number" step="0.01" min="0" required />
+                    `;
+
+            container.appendChild(div);
+            rowIndex++;
+        }
+    </script>
 }

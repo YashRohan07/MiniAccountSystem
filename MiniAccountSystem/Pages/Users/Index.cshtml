@@ -1,4 +1,36 @@
 ﻿@page
 @model MiniAccountSystem.Pages.Users.IndexModel
 @{
+    ViewData["Title"] = "Users List";
 }
+
+<h2>Users List</h2>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.UsersWithRoles)
+        {
+            <tr>
+                <td>@user.User.Id</td>
+                <td>@(user.User.UserName?.Split('@')[0])</td>  <!-- Extract username part -->
+                <td>@user.User.Email</td>
+                <td>@string.Join(", ", user.Roles)</td>
+                <td>
+                    <form method="post" asp-page-handler="Delete">
+                        <input type="hidden" name="id" value="@user.User.Id" />
+                        <button type="submit" onclick="return confirm('Are you sure to delete this user?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

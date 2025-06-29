@@ -14,7 +14,8 @@ Frontend: Razor Pages with vanilla JavaScript for dynamic form manipulation
 
 
 ## User Roles & Access ##
-User	Role	Permissions
-Yash	Admin	Full control: manage all users, roles, chart of accounts, vouchers.
-Dhoni	Viewer	Can view existing data only; cannot add, edit, or delete.
-Rohan	Accountant	Can create and manage vouchers, manage chart of accounts, but cannot manage users and roles.
+Admin (Yash)	Can manage all users, roles, chart of accounts, vouchers.
+
+Viewer (Dhoni)	Can view existing data only; cannot add, edit or delete.
+
+Accountant (Rohan) Can create and manage vouchers, manage chart of accounts, but cannot manage users and roles.
